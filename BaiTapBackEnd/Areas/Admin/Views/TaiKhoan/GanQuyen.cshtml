@@ -1,0 +1,93 @@
+﻿@model BaiTapBackEnd.Models.TaiKhoan
+
+@{
+    ViewData["Title"] = "Gán quyền tài khoản";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-fluid">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1 class="h3 mb-0 text-gray-800">
+            <i class="fas fa-user-shield me-2"></i>Gán quyền tài khoản
+        </h1>
+        <a href="@Url.Action("DanhSach", "TaiKhoan", new { area = "Admin" })" class="btn btn-secondary">
+            <i class="fas fa-arrow-left me-2"></i>Quay lại
+        </a>
+    </div>
+
+    @if (TempData["Error"] != null)
+    {
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <i class="fas fa-exclamation-triangle me-2"></i>@TempData["Error"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+    }
+
+    <div class="card shadow">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Thông tin tài khoản</h6>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-6">
+                    <table class="table table-borderless">
+                        <tr>
+                            <td class="fw-bold" style="width: 150px;">ID:</td>
+                            <td>@Model.Id</td>
+                        </tr>
+                        <tr>
+                            <td class="fw-bold">Tên đăng nhập:</td>
+                            <td><strong>@Model.TenDangNhap</strong></td>
+                        </tr>
+                        <tr>
+                            <td class="fw-bold">Email:</td>
+                            <td>@Model.Email</td>
+                        </tr>
+                        <tr>
+                            <td class="fw-bold">Vai trò hiện tại:</td>
+                            <td>
+                                @if (Model.VaiTro == "Admin")
+                                {
+                                    <span class="badge bg-danger">Admin</span>
+                                }
+                                else
+                                {
+                                    <span class="badge bg-primary">User</span>
+                                }
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                
+                <div class="col-md-6">
+    <form asp-action="GanQuyen" method="post">
+        <input type="hidden" name="id" value="@Model.Id" />
+
+        <div class="mb-3">
+                            <label class="form-label fw-bold">Thay đổi vai trò thành:</label>
+                            <select name="vaiTro" class="form-select" required>
+                                <option value="">Chọn vai trò mới</option>
+                                <option value="User" @(Model.VaiTro == "User" ? "selected" : "")>User</option>
+                <option value="Admin" @(Model.VaiTro == "Admin" ? "selected" : "")>Admin</option>
+            </select>
+                        </div>
+                        
+                        <div class="alert alert-info">
+                            <i class="fas fa-info-circle me-2"></i>
+                            <strong>Lưu ý:</strong> Thay đổi vai trò sẽ ảnh hưởng đến quyền truy cập của tài khoản này.
+        </div>
+
+                        <div class="d-flex gap-2">
+                            <button type="submit" class="btn btn-warning">
+                                <i class="fas fa-save me-2"></i>Cập nhật vai trò
+                            </button>
+                            <a href="@Url.Action("DanhSach", "TaiKhoan", new { area = "Admin" })" class="btn btn-secondary">
+                                <i class="fas fa-times me-2"></i>Hủy
+                            </a>
+                        </div>
+    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

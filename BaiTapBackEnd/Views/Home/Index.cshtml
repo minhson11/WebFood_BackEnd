@@ -1,0 +1,109 @@
+﻿@model List<MonAn>
+@{
+    ViewData["Title"] = "Trang chủ";
+    var danhMucs = new List<(string Ten, string Img)>{
+        ("Burger", "http://localhost:5120/images/98ebbced-b3f8-44b5-89ad-a07aa419968e.jpg"),
+        ("Pizza", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRrgh6Xx8CBnZM8NPOmIEOwqV_KK6PnE1pluA&s"),
+        ("Đồ uống", "https://www.tasteofhome.com/wp-content/uploads/2019/04/1-1.jpeg?fit=700%2C700"),
+        ("Gà rán", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSoygmgFUDbaJjn1i9aqayMpJgUHrp2WW_xnQ&s"),
+        ("Mì Ý", "https://thucphamplaza.com/wp-content/uploads/products_img/cong-thuc-nau-mi-y-chuan-vi.jpg"),
+        ("Combo", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSLQjTdV93FhCmsTCmiGoQ_AN5EnfXCsDHKgQ&s")
+    };
+    var monAnNoiBat = Model != null ? Model.OrderByDescending(m => m.Id).Take(8).ToList() : new List<MonAn>();
+}
+
+<div class="container py-4">
+    <h1 class="text-center mb-4 fw-bold">Chào mừng đến với FoodExpress!</h1>
+    <p class="text-center text-muted mb-5">Khám phá thực đơn đa dạng và đặt món ăn yêu thích của bạn ngay hôm nay.</p>
+
+    <!-- Danh mục món ăn -->
+    <div class="mb-5">
+        <h3 class="mb-4 fw-semibold">Danh mục món ăn</h3>
+        <div class="row g-3 justify-content-center">
+            @foreach (var dm in danhMucs)
+            {
+                <div class="col-6 col-md-3 col-lg-2">
+                    <div class="category-card shadow-sm p-3 mb-2 bg-white rounded text-center h-100 d-flex flex-column align-items-center justify-content-center category-filter-btn" data-danhmuc="@dm.Ten" style="cursor:pointer;transition:box-shadow .2s;">
+                        <div class="category-icon mb-2 d-flex align-items-center justify-content-center rounded-circle bg-light" style="width:80px;height:80px;font-size:2rem;overflow:hidden;">
+                            <img src="@dm.Img" alt="@dm.Ten" style="width:64px;height:64px;object-fit:contain;" />
+                        </div>
+                        <span class="fw-bold">@dm.Ten</span>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+
+    <!-- Món ăn nổi bật -->
+    <div class="mb-5">
+        <h3 class="mb-4 fw-semibold">Món ăn nổi bật</h3>
+        <div class="row g-4" id="food-list">
+            @if (monAnNoiBat.Any())
+            {
+                @foreach (var monAn in monAnNoiBat)
+                {
+                    <div class="col-12 col-sm-6 col-lg-3 food-item" data-danhmuc="@monAn.DanhMuc">
+                        <a href="@Url.Action("ChiTiet", "MonAn", new { id = monAn.Id })" class="text-decoration-none text-dark">
+                            <div class="card h-100 shadow food-card-hover">
+                                @if (!string.IsNullOrEmpty(monAn.HinhAnh))
+                                {
+                                    <img src="@Url.Content("~/images/" + monAn.HinhAnh)" class="card-img-top rounded-top" alt="@monAn.Ten" style="height:180px;object-fit:cover;">
+                                }
+                                <div class="card-body d-flex flex-column align-items-center">
+                                    <h5 class="card-title fw-bold text-truncate text-center">@monAn.Ten</h5>
+                                    <div class="fw-bold text-danger mb-2 fs-5">@monAn.Gia.ToString("N0") VNĐ</div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                }
+            }
+            else
+            {
+                <div class="col-12 text-center text-muted">Chưa có món ăn nổi bật.</div>
+            }
+        </div>
+    </div>
+</div>
+
+<style>
+.category-icon {
+    box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+    transition: background .2s;
+}
+.category-card:hover .category-icon {
+    background: #e9ecef;
+}
+.food-card-hover {
+    transition: box-shadow .2s, transform .2s;
+}
+.food-card-hover:hover {
+    box-shadow: 0 8px 32px rgba(0,0,0,0.15);
+    transform: translateY(-4px) scale(1.02);
+}
+.card-title {
+    margin-bottom: 0.5rem;
+}
+</style>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script>
+        $(document).ready(function () {
+            $('.alert').delay(5000).fadeOut();
+
+            // Lọc món ăn theo danh mục
+            $('.category-filter-btn').click(function () {
+                var selected = $(this).data('danhmuc');
+                $('.category-filter-btn').removeClass('border border-primary');
+                $(this).addClass('border border-primary');
+                if (selected) {
+                    $('.food-item').hide();
+                    $('.food-item[data-danhmuc="' + selected + '"]').show();
+                } else {
+                    $('.food-item').show();
+                }
+            });
+        });
+    </script>
+}

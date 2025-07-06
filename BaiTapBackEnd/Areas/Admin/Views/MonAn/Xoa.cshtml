@@ -1,0 +1,75 @@
+@model BaiTapBackEnd.Models.MonAn
+@{
+    ViewData["Title"] = "Xóa Món Ăn";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card border-danger">
+                <div class="card-header bg-danger text-white">
+                    <h3 class="mb-0">Xác nhận xóa món ăn</h3>
+                </div>
+                <div class="card-body">
+                    <div class="alert alert-warning">
+                        <strong>Bạn có chắc chắn muốn xóa món ăn này?</strong>
+                        <br />
+                        Hành động này không thể hoàn tác.
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-4">
+                            @if (!string.IsNullOrEmpty(Model.HinhAnh))
+                            {
+                                <img src="~/images/@Model.HinhAnh" alt="Hình ảnh món ăn" class="img-fluid rounded" />
+                            }
+                        </div>
+                        <div class="col-md-8">
+                            <dl class="row">
+                                <dt class="col-sm-4">Tên món ăn:</dt>
+                                <dd class="col-sm-8">@Model.Ten</dd>
+
+                                <dt class="col-sm-4">Mô tả:</dt>
+                                <dd class="col-sm-8">@Model.MoTa</dd>
+
+                                <dt class="col-sm-4">Giá:</dt>
+                                <dd class="col-sm-8">@Model.Gia.ToString("N0") VNĐ</dd>
+
+                                <dt class="col-sm-4">Danh mục:</dt>
+                                <dd class="col-sm-8">@Model.DanhMuc</dd>
+                            </dl>
+                        </div>
+                    </div>
+
+                    <form action="@Url.Action("Xoa", "MonAn", new { area = "Admin" })" method="post">
+                        @Html.AntiForgeryToken()
+                        <input type="hidden" asp-for="Id" />
+                        
+                        <div class="d-flex justify-content-between">
+                            <a href="@Url.Action("Index", "MonAn", new { area = "Admin" })" class="btn btn-secondary">
+                                <i class="fas fa-arrow-left"></i> Quay lại
+                            </a>
+                            <button type="submit" class="btn btn-danger" onclick="return confirm('Bạn có chắc chắn muốn xóa món ăn này?')">
+                                <i class="fas fa-trash"></i> Xác nhận xóa
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $('form').on('submit', function (e) {
+                if (!confirm('Bạn có chắc chắn muốn xóa món ăn này?')) {
+                    e.preventDefault();
+                    return false;
+                }
+            });
+        });
+    </script>
+} 

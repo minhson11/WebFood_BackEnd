@@ -1,0 +1,134 @@
+@model List<DonHang>
+@{
+    ViewData["Title"] = "Lịch sử đơn hàng";
+}
+
+<div class="container py-5">
+    <!-- Header -->
+    <div class="text-center mb-5">
+        <h1 class="page-title">Lịch sử đơn hàng</h1>
+        <p class="page-subtitle">Theo dõi tất cả đơn hàng của bạn</p>
+    </div>
+    
+    @if (Model.Any())
+    {
+        <div class="row g-4">
+            @foreach (var donHang in Model.OrderByDescending(d => d.NgayDat))
+            {
+                <div class="col-12">
+                    <div class="order-card">
+                        <div class="order-header">
+                            <div class="order-info">
+                                <h5 class="order-id">Đơn hàng #@donHang.Id</h5>
+                                <span class="order-date">@donHang.NgayDat.ToString("dd/MM/yyyy HH:mm")</span>
+                            </div>
+                            <div class="order-status">
+                                @{
+                                    var statusClass = donHang.TrangThai switch
+                                    {
+                                        "Chờ xác nhận" => "status-pending",
+                                        "Đã xác nhận" => "status-confirmed",
+                                        "Đang giao" => "status-delivering",
+                                        "Đã giao" => "status-delivered",
+                                        "Đã hủy" => "status-cancelled",
+                                        _ => "status-pending"
+                                    };
+                                }
+                                <span class="status-badge @statusClass">@donHang.TrangThai</span>
+                            </div>
+                        </div>
+                        
+                        <div class="order-details">
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <div class="order-items">
+                                        @foreach (var chiTiet in donHang.ChiTietDonHangs.Take(3))
+                                        {
+                                            <div class="order-item">
+                                                <span class="item-name">@chiTiet.MonAn.Ten</span>
+                                                <span class="item-quantity">@chiTiet.SoLuong</span>
+                                                <span class="item-price">@chiTiet.DonGia.ToString("N0") VNĐ</span>
+                                            </div>
+                                        }
+                                        @if (donHang.ChiTietDonHangs.Count > 3)
+                                        {
+                                            <div class="order-item-more">
+                                                <span class="text-muted">Và @(donHang.ChiTietDonHangs.Count - 3) món khác...</span>
+                                            </div>
+                                        }
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="order-summary">
+                                        <div class="summary-item">
+                                            <span>Tổng tiền:</span>
+                                            <strong>@donHang.TongTien.ToString("N0") VNĐ</strong>
+                                        </div>
+                                        @if (!string.IsNullOrEmpty(donHang.GhiChu))
+                                        {
+                                            <div class="summary-item">
+                                                <span>Ghi chú:</span>
+                                                <span class="text-muted">@donHang.GhiChu</span>
+                                            </div>
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="order-actions">
+                            <a href="@Url.Action("ChiTietDonHang", new { id = donHang.Id })" class="btn btn-outline-primary">
+                                <i class="fas fa-eye me-2"></i>Xem chi tiết
+                            </a>
+                            
+                            @if (donHang.TrangThai == "Chờ xác nhận")
+                            {
+                                <button type="button" class="btn btn-outline-danger" onclick="cancelOrder(@donHang.Id)">
+                                    <i class="fas fa-times me-2"></i>Hủy đơn hàng
+                                </button>
+                            }
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+    else
+    {
+        <div class="text-center py-5">
+            <div class="empty-state">
+                <i class="fas fa-shopping-bag fa-3x text-muted mb-3"></i>
+                <h4>Chưa có đơn hàng nào</h4>
+                <p class="text-muted">Bạn chưa đặt đơn hàng nào. Hãy khám phá menu và đặt món ngay!</p>
+                <a href="@Url.Action("Index", "MonAn")" class="btn btn-primary">Xem thực đơn</a>
+            </div>
+        </div>
+    }
+</div>
+
+<script>
+function cancelOrder(orderId) {
+    if (confirm('Bạn có chắc chắn muốn hủy đơn hàng này?')) {
+        fetch(`@Url.Action("HuyDonHang")`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: `donHangId=${orderId}`
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                alert('Đã hủy đơn hàng thành công!');
+                location.reload();
+            } else {
+                alert('Có lỗi xảy ra: ' + data.message);
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('Có lỗi xảy ra khi hủy đơn hàng.');
+        });
+    }
+}
+</script> 

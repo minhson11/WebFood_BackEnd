@@ -1,0 +1,195 @@
+﻿@model IEnumerable<BaiTapBackEnd.Models.MonAn>
+
+@{
+    ViewData["Title"] = "Quản lý món ăn";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+  
+}
+
+<div class="container-fluid">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1 class="h3 mb-0 text-gray-800">
+            <i class="fas fa-utensils me-2"></i>Quản lý món ăn
+        </h1>
+        <a href="@Url.Action("Them", "MonAn", new { area = "Admin" })" class="btn btn-primary">
+            <i class="fas fa-plus me-2"></i>Thêm món ăn mới
+        </a>
+    </div>
+
+    @if (TempData["ThongBao"] != null)
+    {
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <i class="fas fa-check-circle me-2"></i>@TempData["ThongBao"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+    }
+    
+    @if (TempData["Error"] != null)
+    {
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <i class="fas fa-exclamation-triangle me-2"></i>@TempData["Error"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+    }
+
+    <div class="card shadow mb-4">
+        <div class="card-header py-3 d-flex justify-content-between align-items-center">
+            <h6 class="m-0 font-weight-bold text-primary">Danh sách món ăn</h6>
+            <div class="d-flex gap-2">
+                <input type="text" id="searchInput" class="form-control form-control-sm" placeholder="Tìm kiếm món ăn..." style="width: 250px;">
+                <select id="categoryFilter" class="form-select form-select-sm" style="width: 150px;">
+                    <option value="">Tất cả danh mục</option>
+                    <option value="Burger">Burger</option>
+                    <option value="Pizza">Pizza</option>
+                    <option value="Đồ uống">Đồ uống</option>
+                    <option value="Gà rán">Gà rán</option>
+                    <option value="Mì Ý">Mì Ý</option>
+                </select>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Hình ảnh</th>
+                            <th>Tên món</th>
+                            <th>Danh mục</th>
+                            <th>Giá</th>
+                            <th>Mô tả</th>
+                            <th>Thao tác</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+            @foreach (var item in Model)
+            {
+                            <tr class="mon-an-row" data-name="@item.Ten.ToLower()" data-category="@item.DanhMuc">
+                                <td>@item.Id</td>
+                                <td>
+                            @if (!string.IsNullOrEmpty(item.HinhAnh))
+                            {
+                                        <img src="~/images/@item.HinhAnh" alt="@item.Ten" 
+                                             class="img-thumbnail" style="width: 60px; height: 60px; object-fit: cover;">
+                            }
+                            else
+                            {
+                                        <div class="bg-light d-flex align-items-center justify-content-center" 
+                                             style="width: 60px; height: 60px;">
+                                            <i class="fas fa-image text-muted"></i>
+                                </div>
+                            }
+                                </td>
+                                <td>
+                                    <strong>@item.Ten</strong>
+                                </td>
+                                <td>
+                                <span class="badge bg-info">@item.DanhMuc</span>
+                                </td>
+                                <td>
+                                    <span class="text-primary fw-bold">@item.Gia.ToString("N0")đ</span>
+                                </td>
+                                <td>
+                                    @if (!string.IsNullOrEmpty(item.MoTa))
+                                    {
+                                        <span title="@item.MoTa">
+                                            @(item.MoTa.Length > 50 ? item.MoTa.Substring(0, 50) + "..." : item.MoTa)
+                                        </span>
+                                    }
+                                    else
+                                    {
+                                        <span class="text-muted">Không có mô tả</span>
+                                    }
+                                </td>
+                                <td>
+                                    <div class="btn-group" role="group">
+                                        <a href="@Url.Action("Sua", "MonAn", new { area = "Admin", id = item.Id })" 
+                                           class="btn btn-sm btn-outline-primary" title="Sửa">
+                                            <i class="fas fa-edit"></i>
+                                </a>
+                                        <a href="@Url.Action("ChiTiet", "MonAn", new { area = "Admin", id = item.Id })" 
+                                           class="btn btn-sm btn-outline-info" title="Xem chi tiết">
+                                            <i class="fas fa-eye"></i>
+                                </a>
+                                        <button type="button" class="btn btn-sm btn-outline-danger" 
+                                                onclick="confirmDelete(@item.Id, '@item.Ten')" title="Xóa">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+<!-- Delete Confirmation Modal -->
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deleteModalLabel">Xác nhận xóa</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>Bạn có chắc chắn muốn xóa món ăn "<strong id="deleteItemName"></strong>"?</p>
+                <p class="text-danger"><small>Hành động này không thể hoàn tác!</small></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+                <form id="deleteForm" method="post" action="@Url.Action("Xoa", "MonAn", new { area = "Admin" })" style="display: inline;">
+                    @Html.AntiForgeryToken()
+                    <input type="hidden" name="id" id="deleteItemId" />
+                    <button type="submit" class="btn btn-danger">Xóa</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Tìm kiếm và lọc
+    function filterTable() {
+        const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+        const categoryFilter = document.getElementById('categoryFilter').value;
+        const rows = document.querySelectorAll('.mon-an-row');
+
+        rows.forEach(row => {
+            const name = row.getAttribute('data-name');
+            const category = row.getAttribute('data-category');
+            
+            const matchesSearch = name.includes(searchTerm);
+            const matchesCategory = !categoryFilter || category === categoryFilter;
+            
+            if (matchesSearch && matchesCategory) {
+                row.style.display = '';
+            } else {
+                row.style.display = 'none';
+            }
+        });
+    }
+    
+    // Xác nhận xóa
+    function confirmDelete(id, name) {
+        document.getElementById('deleteItemName').textContent = name;
+        document.getElementById('deleteItemId').value = id;
+        const deleteModal = new bootstrap.Modal(document.getElementById('deleteModal'));
+        deleteModal.show();
+    }
+
+    // Event listeners
+    document.getElementById('searchInput').addEventListener('input', filterTable);
+    document.getElementById('categoryFilter').addEventListener('change', filterTable);
+
+    // Auto-hide alerts
+    setTimeout(function() {
+        const alerts = document.querySelectorAll('.alert');
+        alerts.forEach(function(alert) {
+            const bsAlert = new bootstrap.Alert(alert);
+            bsAlert.close();
+        });
+    }, 5000);
+    </script>

@@ -1,0 +1,222 @@
+﻿@model IEnumerable<BaiTapBackEnd.Models.TaiKhoan>
+
+@{
+    ViewData["Title"] = "Quản lý tài khoản";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-fluid">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1 class="h3 mb-0 text-gray-800">
+            <i class="fas fa-users me-2"></i>Quản lý tài khoản
+        </h1>
+    </div>
+
+    @if (TempData["ThongBao"] != null)
+    {
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <i class="fas fa-check-circle me-2"></i>@TempData["ThongBao"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+    }
+
+    @if (TempData["Error"] != null)
+    {
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <i class="fas fa-exclamation-triangle me-2"></i>@TempData["Error"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+    }
+
+    <div class="card shadow mb-4">
+        <div class="card-header py-3 d-flex justify-content-between align-items-center">
+            <h6 class="m-0 font-weight-bold text-primary">Danh sách tài khoản</h6>
+            <div class="d-flex gap-2">
+                <input type="text" id="searchInput" class="form-control form-control-sm" placeholder="Tìm kiếm tài khoản..." style="width: 250px;">
+                <select id="roleFilter" class="form-select form-select-sm" style="width: 150px;">
+                    <option value="">Tất cả vai trò</option>
+                    <option value="Admin">Admin</option>
+                    <option value="User">User</option>
+                </select>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+            <tr>
+                <th>ID</th>
+                <th>Tên đăng nhập</th>
+                <th>Email</th>
+                            <th>Vai trò</th>
+                            <th>Thao tác</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                            <tr class="user-row" data-username="@item.TenDangNhap.ToLower()" data-email="@item.Email.ToLower()" data-role="@item.VaiTro">
+                    <td>@item.Id</td>
+                                <td>
+                                    <strong>@item.TenDangNhap</strong>
+                                </td>
+                    <td>@item.Email</td>
+                                <td>
+                                    @if (item.VaiTro == "Admin")
+                                    {
+                                        <span class="badge bg-danger">Admin</span>
+                                    }
+                                    else
+                                    {
+                                        <span class="badge bg-primary">User</span>
+                                    }
+                    </td>
+                    <td>
+                                    <div class="btn-group" role="group">
+                                        <button type="button" class="btn btn-sm btn-outline-warning" 
+                                                onclick="openRoleModal(@item.Id, '@item.TenDangNhap', '@item.VaiTro')" title="Gán quyền">
+                                            <i class="fas fa-user-shield"></i>
+                                        </button>
+                                        <button type="button" class="btn btn-sm btn-outline-danger" 
+                                                onclick="confirmDelete(@item.Id, '@item.TenDangNhap')" title="Xóa">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Role Assignment Modal -->
+<div class="modal fade" id="roleModal" tabindex="-1" aria-labelledby="roleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="roleModalLabel">Gán quyền cho tài khoản</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>Gán quyền cho tài khoản: <strong id="roleUserName"></strong></p>
+                <form id="roleForm" method="post">
+                    <div class="mb-3">
+                        <label class="form-label fw-bold">Vai trò:</label>
+                        <select name="vaiTro" class="form-select" required>
+                            <option value="">Chọn vai trò</option>
+                            <option value="User">User</option>
+                            <option value="Admin">Admin</option>
+                        </select>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+                <button type="submit" form="roleForm" class="btn btn-warning">Gán quyền</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Delete Confirmation Modal -->
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deleteModalLabel">Xác nhận xóa</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>Bạn có chắc chắn muốn xóa tài khoản "<strong id="deleteItemName"></strong>"?</p>
+                <p class="text-danger"><small>Hành động này không thể hoàn tác!</small></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+                <form id="deleteForm" method="post" style="display: inline;">
+                    <button type="submit" class="btn btn-danger">Xóa</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <script>
+    // Tìm kiếm và lọc
+    function filterTable() {
+        const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+        const roleFilter = document.getElementById('roleFilter').value;
+        const rows = document.querySelectorAll('.user-row');
+
+        rows.forEach(row => {
+            const username = row.getAttribute('data-username');
+            const email = row.getAttribute('data-email');
+            const role = row.getAttribute('data-role');
+            
+            const matchesSearch = username.includes(searchTerm) || email.includes(searchTerm);
+            const matchesRole = !roleFilter || role === roleFilter;
+            
+            if (matchesSearch && matchesRole) {
+                row.style.display = '';
+            } else {
+                row.style.display = 'none';
+            }
+        });
+    }
+
+    // Mở modal gán quyền
+    function openRoleModal(id, username, currentRole) {
+        document.getElementById('roleUserName').textContent = username;
+        document.getElementById('roleForm').action = '@Url.Action("GanQuyen", "TaiKhoan", new { area = "Admin" })';
+        
+        // Thêm input hidden cho id
+        let hiddenInput = document.getElementById('roleForm').querySelector('input[name="id"]');
+        if (!hiddenInput) {
+            hiddenInput = document.createElement('input');
+            hiddenInput.type = 'hidden';
+            hiddenInput.name = 'id';
+            document.getElementById('roleForm').appendChild(hiddenInput);
+        }
+        hiddenInput.value = id;
+        
+        // Set giá trị hiện tại
+        document.querySelector('select[name="vaiTro"]').value = currentRole;
+        
+        const roleModal = new bootstrap.Modal(document.getElementById('roleModal'));
+        roleModal.show();
+    }
+
+    // Xác nhận xóa
+    function confirmDelete(id, username) {
+        document.getElementById('deleteItemName').textContent = username;
+        document.getElementById('deleteForm').action = '@Url.Action("XoaTaiKhoan", "TaiKhoan", new { area = "Admin" })';
+        
+        // Thêm input hidden cho id
+        let hiddenInput = document.getElementById('deleteForm').querySelector('input[name="id"]');
+        if (!hiddenInput) {
+            hiddenInput = document.createElement('input');
+            hiddenInput.type = 'hidden';
+            hiddenInput.name = 'id';
+            document.getElementById('deleteForm').appendChild(hiddenInput);
+        }
+        hiddenInput.value = id;
+        
+        const deleteModal = new bootstrap.Modal(document.getElementById('deleteModal'));
+        deleteModal.show();
+    }
+
+    // Event listeners
+    document.getElementById('searchInput').addEventListener('input', filterTable);
+    document.getElementById('roleFilter').addEventListener('change', filterTable);
+
+    // Auto-hide alerts
+    setTimeout(function() {
+        const alerts = document.querySelectorAll('.alert');
+        alerts.forEach(function(alert) {
+            const bsAlert = new bootstrap.Alert(alert);
+            bsAlert.close();
+            });
+    }, 5000);
+    </script>

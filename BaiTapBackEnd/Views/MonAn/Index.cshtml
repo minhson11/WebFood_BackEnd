@@ -1,0 +1,66 @@
+@model List<MonAn>
+@{
+    ViewData["Title"] = "Thực đơn";
+    var danhMucs = ViewBag.DanhMucs as List<string> ?? new List<string>();
+    var selectedDanhMuc = ViewBag.SelectedDanhMuc as string ?? "";
+    var searchTerm = ViewBag.SearchTerm as string;
+}
+
+<div class="container py-5">
+    <!-- Header -->
+    <div class="text-center mb-5">
+        <h1 class="page-title">Thực đơn</h1>
+        <p class="page-subtitle">Khám phá menu đa dạng với những món ăn ngon nhất</p>
+    </div>
+    
+    <!-- Results Info -->
+    @if (!string.IsNullOrEmpty(searchTerm) || !string.IsNullOrEmpty(selectedDanhMuc))
+    {
+        <div class="results-info mb-4">
+            <div class="alert alert-info">
+                <i class="fas fa-info-circle me-2"></i>
+                @if (!string.IsNullOrEmpty(searchTerm) && !string.IsNullOrEmpty(selectedDanhMuc))
+                {
+                    <span>Tìm kiếm: "@searchTerm" trong danh mục "@selectedDanhMuc" - @Model.Count món ăn</span>
+                }
+                else if (!string.IsNullOrEmpty(searchTerm))
+                {
+                    <span>Tìm kiếm: "@searchTerm" - @Model.Count món ăn</span>
+                }
+                else
+                {
+                    <span>Danh mục: "@selectedDanhMuc" - @Model.Count món ăn</span>
+                }
+                <a href="@Url.Action("Index")" class="btn btn-sm btn-outline-secondary ms-3">Xóa bộ lọc</a>
+            </div>
+        </div>
+    }
+    
+    <!-- Food Grid -->
+    @if (Model.Any())
+    {
+        <div class="row g-4">
+            @foreach (var monAn in Model)
+            {
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                    <a href="@Url.Action("ChiTiet", new { id = monAn.Id })" class="text-decoration-none text-dark">
+                        <div class="card h-100 shadow-sm">
+                            @if (!string.IsNullOrEmpty(monAn.HinhAnh))
+                            {
+                                <img src="@Url.Content("~/images/" + monAn.HinhAnh)" alt="@monAn.Ten" class="card-img-top" style="height:180px;object-fit:cover;">
+                            }
+                            <div class="card-body text-center">
+                                <h5 class="card-title mb-2">@monAn.Ten</h5>
+                                <div class="fw-bold text-danger">@monAn.Gia.ToString("N0") VNĐ</div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            }
+        </div>
+    }
+    else
+    {
+        <div class="text-center text-muted">Không có món ăn nào.</div>
+    }
+</div>

@@ -1,0 +1,21 @@
+@{
+    ViewData["Title"] = "Test Session";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h3>Test Session</h3>
+                </div>
+                <div class="card-body">
+                    <p class="alert alert-info">@ViewBag.Message</p>
+                    <a href="@Url.Action("TestSession", "Home")" class="btn btn-primary">Refresh để test lại</a>
+                    <a href="@Url.Action("Index", "MonAn")" class="btn btn-success">Đi đến thực đơn</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> 

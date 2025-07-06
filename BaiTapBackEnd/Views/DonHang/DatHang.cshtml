@@ -1,0 +1,153 @@
+@model DonHang
+@{
+    ViewData["Title"] = "Đặt hàng";
+    var gioHang = ViewBag.CartItems as List<BaiTapBackEnd.Models.GioHang> ?? new List<BaiTapBackEnd.Models.GioHang>();
+}
+
+<div class="container py-5">
+    <!-- Header -->
+    <div class="text-center mb-5">
+        <h1 class="page-title">Đặt hàng</h1>
+        <p class="page-subtitle">Hoàn tất thông tin để đặt hàng</p>
+    </div>
+    
+    @if (gioHang.Any())
+    {
+        <form asp-action="DatHang" method="post" class="order-form">
+            <div class="row g-4">
+                <!-- Order Items -->
+                <div class="col-lg-8">
+                    <div class="order-items-card">
+                        <div class="card-header">
+                            <h5><i class="fas fa-shopping-cart me-2"></i>Giỏ hàng của bạn</h5>
+                        </div>
+                        <div class="card-body">
+                            @foreach (var item in gioHang)
+                            {
+                                <div class="cart-item">
+                                    <div class="item-image">
+                                        @if (!string.IsNullOrEmpty(item.MonAn.HinhAnh))
+                                        {
+                                            <img src="@Url.Content("~/images/" + item.MonAn.HinhAnh)" alt="@item.MonAn.Ten" class="img-fluid">
+                                        }
+                                        else
+                                        {
+                                            <div class="item-placeholder">
+                                                <i class="fas fa-utensils"></i>
+                                            </div>
+                                        }
+                                    </div>
+                                    <div class="item-info">
+                                        <h6 class="item-name">@item.MonAn.Ten</h6>
+                                        @if (!string.IsNullOrEmpty(item.MonAn.DanhMuc))
+                                        {
+                                            <span class="item-category">@item.MonAn.DanhMuc</span>
+                                        }
+                                    </div>
+                                    <div class="item-quantity">
+                                        <span class="quantity-display">@item.SoLuong</span>
+                                    </div>
+                                    <div class="item-price">
+                                        <span class="price-amount">@item.MonAn.Gia.ToString("N0") VNĐ</span>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Order Form -->
+                <div class="col-lg-4">
+                    <div class="order-form-card">
+                        <div class="card-header">
+                            <h5><i class="fas fa-user me-2"></i>Thông tin giao hàng</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label asp-for="TenKhachHang" class="form-label">Họ tên *</label>
+                                <input asp-for="TenKhachHang" class="form-control" placeholder="Nhập họ tên của bạn" required>
+                                <span asp-validation-for="TenKhachHang" class="text-danger"></span>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label asp-for="SoDienThoai" class="form-label">Số điện thoại *</label>
+                                <input asp-for="SoDienThoai" class="form-control" placeholder="Nhập số điện thoại" required>
+                                <span asp-validation-for="SoDienThoai" class="text-danger"></span>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label asp-for="DiaChi" class="form-label">Địa chỉ giao hàng *</label>
+                                <textarea asp-for="DiaChi" class="form-control" rows="3" placeholder="Nhập địa chỉ giao hàng chi tiết" required></textarea>
+                                <span asp-validation-for="DiaChi" class="text-danger"></span>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label asp-for="PhuongThucThanhToan" class="form-label">Phương thức thanh toán *</label>
+                                <select asp-for="PhuongThucThanhToan" class="form-select" required>
+                                    <option value="">Chọn phương thức thanh toán</option>
+                                    <option value="Tiền mặt">Tiền mặt</option>
+                                    <option value="Chuyển khoản">Chuyển khoản</option>
+                                    <option value="Ví điện tử">Ví điện tử</option>
+                                </select>
+                                <span asp-validation-for="PhuongThucThanhToan" class="text-danger"></span>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label asp-for="GhiChu" class="form-label">Ghi chú</label>
+                                <textarea asp-for="GhiChu" class="form-control" rows="2" placeholder="Ghi chú thêm (không bắt buộc)"></textarea>
+                                <span asp-validation-for="GhiChu" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Order Summary -->
+                    <div class="order-summary-card mt-4">
+                        <div class="card-header">
+                            <h5><i class="fas fa-calculator me-2"></i>Tổng thanh toán</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="summary-item">
+                                <span>Tạm tính:</span>
+                                <span>@gioHang.Sum(x => x.MonAn.Gia * x.SoLuong).ToString("N0") VNĐ</span>
+                            </div>
+                            <div class="summary-item">
+                                <span>Phí giao hàng:</span>
+                                <span>15.000 VNĐ</span>
+                            </div>
+                            <hr>
+                            <div class="summary-total">
+                                <span>Tổng cộng:</span>
+                                <strong>@((gioHang.Sum(x => x.MonAn.Gia * x.SoLuong) + 15000).ToString("N0")) VNĐ</strong>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Action Buttons -->
+                    <div class="order-actions mt-4">
+                        <button type="submit" class="btn btn-primary btn-lg w-100 mb-2">
+                            <i class="fas fa-check me-2"></i>Đặt hàng ngay
+                        </button>
+                        <a href="@Url.Action("Index", "GioHang")" class="btn btn-outline-secondary w-100">
+                            <i class="fas fa-arrow-left me-2"></i>Quay lại giỏ hàng
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </form>
+    }
+    else
+    {
+        <div class="text-center py-5">
+            <div class="empty-state">
+                <i class="fas fa-shopping-cart fa-3x text-muted mb-3"></i>
+                <h4>Giỏ hàng trống</h4>
+                <p class="text-muted">Bạn chưa có món ăn nào trong giỏ hàng.</p>
+                <a href="@Url.Action("Index", "MonAn")" class="btn btn-primary">Xem thực đơn</a>
+            </div>
+        </div>
+    }
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+} 

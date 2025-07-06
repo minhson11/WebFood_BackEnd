@@ -1,0 +1,97 @@
+@model BaiTapBackEnd.Models.MonAn
+@{
+    ViewData["Title"] = "Sửa Món Ăn";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container mt-4">
+    <h2 class="text-warning">Sửa Món Ăn</h2>
+
+
+    @if (TempData["ThongBao"] != null)
+    {
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            @TempData["ThongBao"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+    }
+
+    @if (TempData["Error"] != null)
+    {
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            @TempData["Error"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+    }
+
+    <form action="@Url.Action("Sua", "MonAn", new { area = "Admin", id = Model.Id })" method="post" enctype="multipart/form-data">
+        @Html.AntiForgeryToken()
+        @Html.HiddenFor(m => m.Id)
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+        <div class="mb-3">
+            <label asp-for="Ten" class="form-label">Tên món ăn</label>
+            <input asp-for="Ten" name="Ten" class="form-control" placeholder="Nhập tên món ăn" />
+            <span asp-validation-for="Ten" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="MoTa" class="form-label">Mô tả</label>
+            <textarea asp-for="MoTa" name="MoTa" class="form-control" rows="3" placeholder="Nhập mô tả món ăn"></textarea>
+            <span asp-validation-for="MoTa" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Gia" class="form-label">Giá</label>
+            <input asp-for="Gia" name="Gia" type="number" class="form-control" step="1000" placeholder="Nhập giá" />
+            <span asp-validation-for="Gia" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="DanhMuc" class="form-label">Danh mục</label>
+            <select asp-for="DanhMuc" name="DanhMuc" class="form-control">
+                <option value="">-- Chọn danh mục --</option>
+                <option value="Burger">Burger</option>
+                <option value="Pizza">Pizza</option>
+                <option value="Đồ uống">Đồ uống</option>
+                <option value="Gà rán">Gà rán</option>
+                <option value="Mì Ý">Mì Ý</option>
+                <option value="Combo">Combo</option>
+                <option value="Khác">Khác</option>
+            </select>
+            <span asp-validation-for="DanhMuc" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Ảnh hiện tại</label><br />
+            @if (!string.IsNullOrEmpty(Model.HinhAnh))
+            {
+                <img src="~/images/@Model.HinhAnh" alt="Hình ảnh món ăn" width="150" class="img-thumbnail" />
+            }
+            else
+            {
+                <span class="text-muted">Chưa có ảnh</span>
+            }
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Hình ảnh mới (nếu muốn đổi)</label>
+            <input type="file" name="fileHinhAnh" class="form-control" accept="image/*" />
+            <small class="form-text text-muted">Chấp nhận: JPG, PNG, JPEG, GIF</small>
+        </div>
+
+        <div class="mb-3">
+            <button type="submit" class="btn btn-warning">Cập nhật</button>
+            <a href="@Url.Action("Index", "MonAn", new { area = "Admin" })" class="btn btn-secondary">Quay lại</a>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script>
+        $(document).ready(function () {
+            $('.alert').delay(5000).fadeOut();
+        });
+    </script>
+}

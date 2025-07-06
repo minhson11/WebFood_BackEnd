@@ -1,0 +1,258 @@
+@model BaiTapBackEnd.Models.DonHang
+
+@{
+    ViewData["Title"] = "Chi tiết đơn hàng #" + Model.Id;
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    
+    string GetTrangThaiBadgeClass(string trangThai)
+    {
+        return trangThai switch
+        {
+            "Chờ xác nhận" => "bg-warning",
+            "Đã xác nhận" => "bg-info",
+            "Đang giao" => "bg-primary",
+            "Hoàn thành" => "bg-success",
+            "Đã hủy" => "bg-danger",
+            _ => "bg-secondary"
+        };
+    }
+    
+    var timeSpan = DateTime.Now - Model.NgayDat;
+    string thoiGianXuLy;
+    if (timeSpan.TotalHours < 1)
+    {
+        thoiGianXuLy = $"{(int)timeSpan.TotalMinutes} phút";
+    }
+    else if (timeSpan.TotalHours < 24)
+    {
+        thoiGianXuLy = $"{(int)timeSpan.TotalHours} giờ";
+    }
+    else
+    {
+        thoiGianXuLy = $"{(int)timeSpan.TotalDays} ngày";
+    }
+}
+
+<div class="container-fluid">
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">Chi tiết đơn hàng #@Model.Id</h1>
+        <a href="@Url.Action("Index")" class="btn btn-secondary">
+            <i class="fas fa-arrow-left"></i> Quay lại danh sách
+        </a>
+    </div>
+
+    <div class="row">
+        <!-- Thông tin đơn hàng -->
+        <div class="col-lg-8">
+            <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">Thông tin đơn hàng</h6>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <p><strong>Mã đơn hàng:</strong> #@Model.Id</p>
+                            <p><strong>Ngày đặt:</strong> @Model.NgayDat.ToString("dd/MM/yyyy HH:mm")</p>
+                            <p><strong>Phương thức thanh toán:</strong> @Model.PhuongThucThanhToan</p>
+                            <p><strong>Tổng tiền:</strong> <span class="text-danger font-weight-bold">@Model.TongTien.ToString("N0") VNĐ</span></p>
+                        </div>
+                        <div class="col-md-6">
+                            <p><strong>Trạng thái:</strong> 
+                                <span class="badge @GetTrangThaiBadgeClass(Model.TrangThai)">@Model.TrangThai</span>
+                            </p>
+                            @if (Model.TaiKhoan != null)
+                            {
+                                <p><strong>Tài khoản:</strong> @Model.TaiKhoan.TenDangNhap</p>
+                            }
+                            else
+                            {
+                                <p><strong>Tài khoản:</strong> <span class="text-muted">Khách hàng không đăng nhập</span></p>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Danh sách món ăn -->
+            <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">Danh sách món ăn</h6>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Món ăn</th>
+                                    <th>Đơn giá</th>
+                                    <th>Số lượng</th>
+                                    <th>Thành tiền</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var chiTiet in Model.ChiTietDonHangs)
+                                {
+                                    <tr>
+                                        <td>
+                                            <div class="d-flex align-items-center">
+                                                @if (!string.IsNullOrEmpty(chiTiet.MonAn.HinhAnh))
+                                                {
+                                                    <img src="~/images/@chiTiet.MonAn.HinhAnh" 
+                                                         alt="@chiTiet.MonAn.Ten" 
+                                                         class="me-3" style="width: 50px; height: 50px; object-fit: cover;">
+                                                }
+                                                <div>
+                                                    <strong>@chiTiet.MonAn.Ten</strong>
+                                                    @if (!string.IsNullOrEmpty(chiTiet.MonAn.MoTa))
+                                                    {
+                                                        <br><small class="text-muted">@chiTiet.MonAn.MoTa</small>
+                                                    }
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>@chiTiet.DonGia.ToString("N0") VNĐ</td>
+                                        <td>@chiTiet.SoLuong</td>
+                                        <td><strong>@((chiTiet.DonGia * chiTiet.SoLuong).ToString("N0")) VNĐ</strong></td>
+                                    </tr>
+                                }
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <td colspan="3" class="text-end"><strong>Tổng cộng:</strong></td>
+                                    <td><strong class="text-danger">@Model.TongTien.ToString("N0") VNĐ</strong></td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Thông tin khách hàng và cập nhật trạng thái -->
+        <div class="col-lg-4">
+            <!-- Thông tin khách hàng -->
+            <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">Thông tin khách hàng</h6>
+                </div>
+                <div class="card-body">
+                    <p><strong>Tên khách hàng:</strong> @Model.TenKhachHang</p>
+                    <p><strong>Số điện thoại:</strong> @Model.SoDienThoai</p>
+                    <p><strong>Địa chỉ:</strong> @Model.DiaChi</p>
+                    @if (!string.IsNullOrEmpty(Model.GhiChu))
+                    {
+                        <p><strong>Ghi chú:</strong> @Model.GhiChu</p>
+                    }
+                </div>
+            </div>
+
+            <!-- Cập nhật trạng thái -->
+            @if (Model.TrangThai != "Hoàn thành" && Model.TrangThai != "Đã hủy")
+            {
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3">
+                        <h6 class="m-0 font-weight-bold text-primary">Cập nhật trạng thái</h6>
+                    </div>
+                    <div class="card-body">
+                        <form id="updateStatusForm">
+                            <input type="hidden" id="donHangId" value="@Model.Id">
+                            <div class="mb-3">
+                                <label for="trangThaiMoi" class="form-label">Trạng thái mới</label>
+                                <select class="form-control" id="trangThaiMoi" required>
+                                    @foreach (var trangThai in ViewBag.TrangThaiList)
+                                    {
+                                        <option value="@trangThai" @(Model.TrangThai == trangThai ? "selected" : "")>@trangThai</option>
+                                    }
+                                </select>
+                            </div>
+                            <button type="button" class="btn btn-primary w-100" onclick="updateOrderStatus()">
+                                <i class="fas fa-save"></i> Cập nhật trạng thái
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            }
+            else
+            {
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3">
+                        <h6 class="m-0 font-weight-bold text-primary">Trạng thái đơn hàng</h6>
+                    </div>
+                    <div class="card-body">
+                        <p class="text-center">
+                            <span class="badge @GetTrangThaiBadgeClass(Model.TrangThai) fs-6">@Model.TrangThai</span>
+                        </p>
+                        <p class="text-muted text-center small">
+                            @if (Model.TrangThai == "Hoàn thành")
+                            {
+                                <span><i class="fas fa-info-circle"></i> Đơn hàng đã hoàn thành, không thể thay đổi trạng thái.</span>
+                            }
+                            else if (Model.TrangThai == "Đã hủy")
+                            {
+                                <span><i class="fas fa-info-circle"></i> Đơn hàng đã bị hủy, không thể thay đổi trạng thái.</span>
+                            }
+                        </p>
+                    </div>
+                </div>
+            }
+
+            <!-- Thông tin bổ sung -->
+            <div class="card shadow">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">Thông tin bổ sung</h6>
+                </div>
+                <div class="card-body">
+                    <p><strong>Ngày đặt:</strong> @Model.NgayDat.ToString("dd/MM/yyyy HH:mm")</p>
+                    <p><strong>Thời gian xử lý:</strong> 
+                        @if (timeSpan.TotalHours < 1)
+                        {
+                            <span class="text-success">@thoiGianXuLy</span>
+                        }
+                        else if (timeSpan.TotalHours < 24)
+                        {
+                            <span class="text-warning">@thoiGianXuLy</span>
+                        }
+                        else
+                        {
+                            <span class="text-danger">@thoiGianXuLy</span>
+                        }
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        function updateOrderStatus() {
+            const donHangId = document.getElementById('donHangId').value;
+            const trangThaiMoi = document.getElementById('trangThaiMoi').value;
+
+            if (!confirm('Bạn có chắc chắn muốn cập nhật trạng thái đơn hàng này?')) {
+                return;
+            }
+
+            fetch('@Url.Action("CapNhatTrangThai")', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: `donHangId=${donHangId}&trangThaiMoi=${encodeURIComponent(trangThaiMoi)}`
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert(data.message);
+                    location.reload();
+                } else {
+                    alert('Lỗi: ' + data.message);
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Có lỗi xảy ra khi cập nhật trạng thái.');
+            });
+        }
+    </script>
+} 

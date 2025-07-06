@@ -1,0 +1,168 @@
+@model DonHang
+@{
+    ViewData["Title"] = $"Chi tiết đơn hàng #{Model.Id}";
+}
+
+<div class="container py-5">
+    <!-- Header -->
+    <div class="order-detail-header">
+        <div class="row align-items-center">
+            <div class="col-md-8">
+                <h1 class="page-title">Đơn hàng #@Model.Id</h1>
+                <p class="page-subtitle">Đặt lúc @Model.NgayDat.ToString("dd/MM/yyyy HH:mm")</p>
+            </div>
+            <div class="col-md-4 text-md-end">
+                @{
+                    var statusClass = Model.TrangThai switch
+                    {
+                        "Chờ xác nhận" => "status-pending",
+                        "Đã xác nhận" => "status-confirmed",
+                        "Đang giao" => "status-delivering",
+                        "Đã giao" => "status-delivered",
+                        "Đã hủy" => "status-cancelled",
+                        _ => "status-pending"
+                    };
+                }
+                <span class="status-badge @statusClass">@Model.TrangThai</span>
+            </div>
+        </div>
+    </div>
+    
+    <div class="row g-4">
+        <!-- Order Items -->
+        <div class="col-lg-8">
+            <div class="order-detail-card">
+                <div class="card-header">
+                    <h5><i class="fas fa-list me-2"></i>Chi tiết đơn hàng</h5>
+                </div>
+                <div class="card-body">
+                    @foreach (var chiTiet in Model.ChiTietDonHangs)
+                    {
+                        <div class="order-item-detail">
+                            <div class="item-image">
+                                @if (!string.IsNullOrEmpty(chiTiet.MonAn.HinhAnh))
+                                {
+                                    <img src="@Url.Content("~/images/" + chiTiet.MonAn.HinhAnh)" alt="@chiTiet.MonAn.Ten" class="img-fluid">
+                                }
+                                else
+                                {
+                                    <div class="item-placeholder">
+                                        <i class="fas fa-utensils"></i>
+                                    </div>
+                                }
+                            </div>
+                            <div class="item-info">
+                                <h6 class="item-name">@chiTiet.MonAn.Ten</h6>
+                                @if (!string.IsNullOrEmpty(chiTiet.MonAn.DanhMuc))
+                                {
+                                    <span class="item-category">@chiTiet.MonAn.DanhMuc</span>
+                                }
+                            </div>
+                            <div class="item-quantity">
+                                <span class="quantity-badge">x@chiTiet.SoLuong</span>
+                            </div>
+                            <div class="item-price">
+                                <span class="price-amount">@chiTiet.DonGia.ToString("N0") VNĐ</span>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+        
+        <!-- Order Summary -->
+        <div class="col-lg-4">
+            <div class="order-summary-card">
+                <div class="card-header">
+                    <h5><i class="fas fa-user me-2"></i>Thông tin giao hàng</h5>
+                </div>
+                <div class="card-body">
+                    <div class="info-item">
+                        <span class="info-label">Họ tên:</span>
+                        <span class="info-value">@Model.TenKhachHang</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Số điện thoại:</span>
+                        <span class="info-value">@Model.SoDienThoai</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Địa chỉ:</span>
+                        <span class="info-value">@Model.DiaChi</span>
+                    </div>
+                    @if (!string.IsNullOrEmpty(Model.GhiChu))
+                    {
+                        <div class="info-item">
+                            <span class="info-label">Ghi chú:</span>
+                            <span class="info-value">@Model.GhiChu</span>
+                        </div>
+                    }
+                    <div class="info-item">
+                        <span class="info-label">Thanh toán:</span>
+                        <span class="info-value">@Model.PhuongThucThanhToan</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="order-summary-card mt-4">
+                <div class="card-header">
+                    <h5><i class="fas fa-calculator me-2"></i>Tổng thanh toán</h5>
+                </div>
+                <div class="card-body">
+                    <div class="summary-item">
+                        <span>Tạm tính:</span>
+                        <span>@Model.TongTien.ToString("N0") VNĐ</span>
+                    </div>
+                    <div class="summary-item">
+                        <span>Phí giao hàng:</span>
+                        <span>15.000 VNĐ</span>
+                    </div>
+                    <hr>
+                    <div class="summary-total">
+                        <span>Tổng cộng:</span>
+                        <strong>@((Model.TongTien + 15000).ToString("N0")) VNĐ</strong>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="order-actions mt-4">
+                <a href="@Url.Action("LichSuDonHang")" class="btn btn-outline-secondary w-100 mb-2">
+                    <i class="fas fa-arrow-left me-2"></i>Quay lại
+                </a>
+                
+                @if (Model.TrangThai == "Chờ xác nhận")
+                {
+                    <button type="button" class="btn btn-outline-danger w-100" onclick="cancelOrder(@Model.Id)">
+                        <i class="fas fa-times me-2"></i>Hủy đơn hàng
+                    </button>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+function cancelOrder(orderId) {
+    if (confirm('Bạn có chắc chắn muốn hủy đơn hàng này?')) {
+        fetch(`@Url.Action("HuyDonHang")`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: `donHangId=${orderId}`
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                alert('Đã hủy đơn hàng thành công!');
+                window.location.href = '@Url.Action("LichSuDonHang")';
+            } else {
+                alert('Có lỗi xảy ra: ' + data.message);
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('Có lỗi xảy ra khi hủy đơn hàng.');
+        });
+    }
+}
+</script> 

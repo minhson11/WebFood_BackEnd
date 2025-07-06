@@ -1,0 +1,563 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\Hoc\\Ky 3 Nam 2\\Back-end\\BaiTapBackEnd\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{79DA0CF2-29DD-412E-8A13-EB8EC5CCC41C}|BaiTapBackEnd.csproj|d:\\hoc\\ky 3 nam 2\\back-end\\baitapbackend\\scaffoldingreadme.txt||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{79DA0CF2-29DD-412E-8A13-EB8EC5CCC41C}|BaiTapBackEnd.csproj|solutionrelative:scaffoldingreadme.txt||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{79DA0CF2-29DD-412E-8A13-EB8EC5CCC41C}|BaiTapBackEnd.csproj|d:\\hoc\\ky 3 nam 2\\back-end\\baitapbackend\\views\\donhang\\dathang.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{79DA0CF2-29DD-412E-8A13-EB8EC5CCC41C}|BaiTapBackEnd.csproj|solutionrelative:views\\donhang\\dathang.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{79DA0CF2-29DD-412E-8A13-EB8EC5CCC41C}|BaiTapBackEnd.csproj|d:\\hoc\\ky 3 nam 2\\back-end\\baitapbackend\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{79DA0CF2-29DD-412E-8A13-EB8EC5CCC41C}|BaiTapBackEnd.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{79DA0CF2-29DD-412E-8A13-EB8EC5CCC41C}|BaiTapBackEnd.csproj|d:\\hoc\\ky 3 nam 2\\back-end\\baitapbackend\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{79DA0CF2-29DD-412E-8A13-EB8EC5CCC41C}|BaiTapBackEnd.csproj|solutionrelative:appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{79DA0CF2-29DD-412E-8A13-EB8EC5CCC41C}|BaiTapBackEnd.csproj|d:\\hoc\\ky 3 nam 2\\back-end\\baitapbackend\\areas\\admin\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{79DA0CF2-29DD-412E-8A13-EB8EC5CCC41C}|BaiTapBackEnd.csproj|solutionrelative:areas\\admin\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{79DA0CF2-29DD-412E-8A13-EB8EC5CCC41C}|BaiTapBackEnd.csproj|d:\\hoc\\ky 3 nam 2\\back-end\\baitapbackend\\areas\\admin\\views\\monan\\sua.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{79DA0CF2-29DD-412E-8A13-EB8EC5CCC41C}|BaiTapBackEnd.csproj|solutionrelative:areas\\admin\\views\\monan\\sua.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{79DA0CF2-29DD-412E-8A13-EB8EC5CCC41C}|BaiTapBackEnd.csproj|d:\\hoc\\ky 3 nam 2\\back-end\\baitapbackend\\areas\\admin\\controllers\\monancontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{79DA0CF2-29DD-412E-8A13-EB8EC5CCC41C}|BaiTapBackEnd.csproj|solutionrelative:areas\\admin\\controllers\\monancontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{79DA0CF2-29DD-412E-8A13-EB8EC5CCC41C}|BaiTapBackEnd.csproj|d:\\hoc\\ky 3 nam 2\\back-end\\baitapbackend\\areas\\admin\\views\\monan\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{79DA0CF2-29DD-412E-8A13-EB8EC5CCC41C}|BaiTapBackEnd.csproj|solutionrelative:areas\\admin\\views\\monan\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{79DA0CF2-29DD-412E-8A13-EB8EC5CCC41C}|BaiTapBackEnd.csproj|d:\\hoc\\ky 3 nam 2\\back-end\\baitapbackend\\models\\monan.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{79DA0CF2-29DD-412E-8A13-EB8EC5CCC41C}|BaiTapBackEnd.csproj|solutionrelative:models\\monan.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{79DA0CF2-29DD-412E-8A13-EB8EC5CCC41C}|BaiTapBackEnd.csproj|d:\\hoc\\ky 3 nam 2\\back-end\\baitapbackend\\areas\\admin\\views\\donhang\\chitiet.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{79DA0CF2-29DD-412E-8A13-EB8EC5CCC41C}|BaiTapBackEnd.csproj|solutionrelative:areas\\admin\\views\\donhang\\chitiet.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{79DA0CF2-29DD-412E-8A13-EB8EC5CCC41C}|BaiTapBackEnd.csproj|d:\\hoc\\ky 3 nam 2\\back-end\\baitapbackend\\areas\\admin\\controllers\\taikhoancontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{79DA0CF2-29DD-412E-8A13-EB8EC5CCC41C}|BaiTapBackEnd.csproj|solutionrelative:areas\\admin\\controllers\\taikhoancontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{79DA0CF2-29DD-412E-8A13-EB8EC5CCC41C}|BaiTapBackEnd.csproj|d:\\hoc\\ky 3 nam 2\\back-end\\baitapbackend\\areas\\admin\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{79DA0CF2-29DD-412E-8A13-EB8EC5CCC41C}|BaiTapBackEnd.csproj|solutionrelative:areas\\admin\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{79DA0CF2-29DD-412E-8A13-EB8EC5CCC41C}|BaiTapBackEnd.csproj|d:\\hoc\\ky 3 nam 2\\back-end\\baitapbackend\\areas\\admin\\views\\monan\\them.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{79DA0CF2-29DD-412E-8A13-EB8EC5CCC41C}|BaiTapBackEnd.csproj|solutionrelative:areas\\admin\\views\\monan\\them.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{79DA0CF2-29DD-412E-8A13-EB8EC5CCC41C}|BaiTapBackEnd.csproj|d:\\hoc\\ky 3 nam 2\\back-end\\baitapbackend\\views\\donhang\\lichsudonhang.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{79DA0CF2-29DD-412E-8A13-EB8EC5CCC41C}|BaiTapBackEnd.csproj|solutionrelative:views\\donhang\\lichsudonhang.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{79DA0CF2-29DD-412E-8A13-EB8EC5CCC41C}|BaiTapBackEnd.csproj|d:\\hoc\\ky 3 nam 2\\back-end\\baitapbackend\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{79DA0CF2-29DD-412E-8A13-EB8EC5CCC41C}|BaiTapBackEnd.csproj|solutionrelative:views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{79DA0CF2-29DD-412E-8A13-EB8EC5CCC41C}|BaiTapBackEnd.csproj|d:\\hoc\\ky 3 nam 2\\back-end\\baitapbackend\\views\\donhang\\chitietdonhang.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{79DA0CF2-29DD-412E-8A13-EB8EC5CCC41C}|BaiTapBackEnd.csproj|solutionrelative:views\\donhang\\chitietdonhang.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{79DA0CF2-29DD-412E-8A13-EB8EC5CCC41C}|BaiTapBackEnd.csproj|d:\\hoc\\ky 3 nam 2\\back-end\\baitapbackend\\models\\chitietdonhang.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{79DA0CF2-29DD-412E-8A13-EB8EC5CCC41C}|BaiTapBackEnd.csproj|solutionrelative:models\\chitietdonhang.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{79DA0CF2-29DD-412E-8A13-EB8EC5CCC41C}|BaiTapBackEnd.csproj|d:\\hoc\\ky 3 nam 2\\back-end\\baitapbackend\\views\\taikhoan\\dangnhap.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{79DA0CF2-29DD-412E-8A13-EB8EC5CCC41C}|BaiTapBackEnd.csproj|solutionrelative:views\\taikhoan\\dangnhap.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{79DA0CF2-29DD-412E-8A13-EB8EC5CCC41C}|BaiTapBackEnd.csproj|d:\\hoc\\ky 3 nam 2\\back-end\\baitapbackend\\views\\taikhoan\\dangky.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{79DA0CF2-29DD-412E-8A13-EB8EC5CCC41C}|BaiTapBackEnd.csproj|solutionrelative:views\\taikhoan\\dangky.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{79DA0CF2-29DD-412E-8A13-EB8EC5CCC41C}|BaiTapBackEnd.csproj|d:\\hoc\\ky 3 nam 2\\back-end\\baitapbackend\\views\\monan\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{79DA0CF2-29DD-412E-8A13-EB8EC5CCC41C}|BaiTapBackEnd.csproj|solutionrelative:views\\monan\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{79DA0CF2-29DD-412E-8A13-EB8EC5CCC41C}|BaiTapBackEnd.csproj|d:\\hoc\\ky 3 nam 2\\back-end\\baitapbackend\\areas\\admin\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{79DA0CF2-29DD-412E-8A13-EB8EC5CCC41C}|BaiTapBackEnd.csproj|solutionrelative:areas\\admin\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{79DA0CF2-29DD-412E-8A13-EB8EC5CCC41C}|BaiTapBackEnd.csproj|d:\\hoc\\ky 3 nam 2\\back-end\\baitapbackend\\areas\\admin\\views\\taikhoan\\ganquyen.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{79DA0CF2-29DD-412E-8A13-EB8EC5CCC41C}|BaiTapBackEnd.csproj|solutionrelative:areas\\admin\\views\\taikhoan\\ganquyen.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{79DA0CF2-29DD-412E-8A13-EB8EC5CCC41C}|BaiTapBackEnd.csproj|d:\\hoc\\ky 3 nam 2\\back-end\\baitapbackend\\areas\\admin\\views\\taikhoan\\danhsach.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{79DA0CF2-29DD-412E-8A13-EB8EC5CCC41C}|BaiTapBackEnd.csproj|solutionrelative:areas\\admin\\views\\taikhoan\\danhsach.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{79DA0CF2-29DD-412E-8A13-EB8EC5CCC41C}|BaiTapBackEnd.csproj|d:\\hoc\\ky 3 nam 2\\back-end\\baitapbackend\\models\\taikhoan.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{79DA0CF2-29DD-412E-8A13-EB8EC5CCC41C}|BaiTapBackEnd.csproj|solutionrelative:models\\taikhoan.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{79DA0CF2-29DD-412E-8A13-EB8EC5CCC41C}|BaiTapBackEnd.csproj|d:\\hoc\\ky 3 nam 2\\back-end\\baitapbackend\\controllers\\giohangcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{79DA0CF2-29DD-412E-8A13-EB8EC5CCC41C}|BaiTapBackEnd.csproj|solutionrelative:controllers\\giohangcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{79DA0CF2-29DD-412E-8A13-EB8EC5CCC41C}|BaiTapBackEnd.csproj|d:\\hoc\\ky 3 nam 2\\back-end\\baitapbackend\\models\\giohang.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{79DA0CF2-29DD-412E-8A13-EB8EC5CCC41C}|BaiTapBackEnd.csproj|solutionrelative:models\\giohang.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{79DA0CF2-29DD-412E-8A13-EB8EC5CCC41C}|BaiTapBackEnd.csproj|d:\\hoc\\ky 3 nam 2\\back-end\\baitapbackend\\controllers\\donhangcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{79DA0CF2-29DD-412E-8A13-EB8EC5CCC41C}|BaiTapBackEnd.csproj|solutionrelative:controllers\\donhangcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{79DA0CF2-29DD-412E-8A13-EB8EC5CCC41C}|BaiTapBackEnd.csproj|d:\\hoc\\ky 3 nam 2\\back-end\\baitapbackend\\models\\donhang.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{79DA0CF2-29DD-412E-8A13-EB8EC5CCC41C}|BaiTapBackEnd.csproj|solutionrelative:models\\donhang.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{79DA0CF2-29DD-412E-8A13-EB8EC5CCC41C}|BaiTapBackEnd.csproj|d:\\hoc\\ky 3 nam 2\\back-end\\baitapbackend\\models\\shopdoannhanhdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{79DA0CF2-29DD-412E-8A13-EB8EC5CCC41C}|BaiTapBackEnd.csproj|solutionrelative:models\\shopdoannhanhdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{79DA0CF2-29DD-412E-8A13-EB8EC5CCC41C}|BaiTapBackEnd.csproj|d:\\hoc\\ky 3 nam 2\\back-end\\baitapbackend\\controllers\\taikhoancontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{79DA0CF2-29DD-412E-8A13-EB8EC5CCC41C}|BaiTapBackEnd.csproj|solutionrelative:controllers\\taikhoancontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 1,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedHeight": 26,
+          "SelectedChildIndex": 9,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{40ea2e6b-2121-4bb8-a43e-c83c04b51041}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "ChiTiet.cshtml",
+              "DocumentMoniker": "D:\\Hoc\\Ky 3 Nam 2\\Back-end\\BaiTapBackEnd\\Areas\\Admin\\Views\\DonHang\\ChiTiet.cshtml",
+              "RelativeDocumentMoniker": "Areas\\Admin\\Views\\DonHang\\ChiTiet.cshtml",
+              "ToolTip": "D:\\Hoc\\Ky 3 Nam 2\\Back-end\\BaiTapBackEnd\\Areas\\Admin\\Views\\DonHang\\ChiTiet.cshtml",
+              "RelativeToolTip": "Areas\\Admin\\Views\\DonHang\\ChiTiet.cshtml",
+              "ViewState": "AgIAAD8AAAAAAAAAAAAAAEUAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-06-30T03:15:56.389Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "TaiKhoanController.cs",
+              "DocumentMoniker": "D:\\Hoc\\Ky 3 Nam 2\\Back-end\\BaiTapBackEnd\\Areas\\Admin\\Controllers\\TaiKhoanController.cs",
+              "RelativeDocumentMoniker": "Areas\\Admin\\Controllers\\TaiKhoanController.cs",
+              "ToolTip": "D:\\Hoc\\Ky 3 Nam 2\\Back-end\\BaiTapBackEnd\\Areas\\Admin\\Controllers\\TaiKhoanController.cs",
+              "RelativeToolTip": "Areas\\Admin\\Controllers\\TaiKhoanController.cs",
+              "ViewState": "AgIAAEUAAAAAAAAAAAAowEIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-28T13:47:54.062Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "D:\\Hoc\\Ky 3 Nam 2\\Back-end\\BaiTapBackEnd\\appsettings.json",
+              "RelativeDocumentMoniker": "appsettings.json",
+              "ToolTip": "D:\\Hoc\\Ky 3 Nam 2\\Back-end\\BaiTapBackEnd\\appsettings.json",
+              "RelativeToolTip": "appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAXAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-06-28T13:23:18.433Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\Hoc\\Ky 3 Nam 2\\Back-end\\BaiTapBackEnd\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "D:\\Hoc\\Ky 3 Nam 2\\Back-end\\BaiTapBackEnd\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-28T13:27:34.752Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "DatHang.cshtml",
+              "DocumentMoniker": "D:\\Hoc\\Ky 3 Nam 2\\Back-end\\BaiTapBackEnd\\Views\\DonHang\\DatHang.cshtml",
+              "RelativeDocumentMoniker": "Views\\DonHang\\DatHang.cshtml",
+              "ToolTip": "D:\\Hoc\\Ky 3 Nam 2\\Back-end\\BaiTapBackEnd\\Views\\DonHang\\DatHang.cshtml",
+              "RelativeToolTip": "Views\\DonHang\\DatHang.cshtml",
+              "ViewState": "AgIAAB4AAAAAAAAAAAAAACwAAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-06-30T03:54:42.255Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ScaffoldingReadMe.txt",
+              "DocumentMoniker": "D:\\Hoc\\Ky 3 Nam 2\\Back-end\\BaiTapBackEnd\\ScaffoldingReadMe.txt",
+              "RelativeDocumentMoniker": "ScaffoldingReadMe.txt",
+              "ToolTip": "D:\\Hoc\\Ky 3 Nam 2\\Back-end\\BaiTapBackEnd\\ScaffoldingReadMe.txt",
+              "RelativeToolTip": "ScaffoldingReadMe.txt",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
+              "WhenOpened": "2025-06-28T13:45:41.605Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "MonAn.cs",
+              "DocumentMoniker": "D:\\Hoc\\Ky 3 Nam 2\\Back-end\\BaiTapBackEnd\\Models\\MonAn.cs",
+              "RelativeDocumentMoniker": "Models\\MonAn.cs",
+              "ToolTip": "D:\\Hoc\\Ky 3 Nam 2\\Back-end\\BaiTapBackEnd\\Models\\MonAn.cs",
+              "RelativeToolTip": "Models\\MonAn.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-28T13:26:56.55Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\Hoc\\Ky 3 Nam 2\\Back-end\\BaiTapBackEnd\\Areas\\Admin\\Views\\MonAn\\Index.cshtml",
+              "RelativeDocumentMoniker": "Areas\\Admin\\Views\\MonAn\\Index.cshtml",
+              "ToolTip": "D:\\Hoc\\Ky 3 Nam 2\\Back-end\\BaiTapBackEnd\\Areas\\Admin\\Views\\MonAn\\Index.cshtml",
+              "RelativeToolTip": "Areas\\Admin\\Views\\MonAn\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAABSAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-06-28T14:05:28.983Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "MonAnController.cs",
+              "DocumentMoniker": "D:\\Hoc\\Ky 3 Nam 2\\Back-end\\BaiTapBackEnd\\Areas\\Admin\\Controllers\\MonAnController.cs",
+              "RelativeDocumentMoniker": "Areas\\Admin\\Controllers\\MonAnController.cs",
+              "ToolTip": "D:\\Hoc\\Ky 3 Nam 2\\Back-end\\BaiTapBackEnd\\Areas\\Admin\\Controllers\\MonAnController.cs",
+              "RelativeToolTip": "Areas\\Admin\\Controllers\\MonAnController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAJgAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-28T14:05:01.173Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Sua.cshtml",
+              "DocumentMoniker": "D:\\Hoc\\Ky 3 Nam 2\\Back-end\\BaiTapBackEnd\\Areas\\Admin\\Views\\MonAn\\Sua.cshtml",
+              "RelativeDocumentMoniker": "Areas\\Admin\\Views\\MonAn\\Sua.cshtml",
+              "ToolTip": "D:\\Hoc\\Ky 3 Nam 2\\Back-end\\BaiTapBackEnd\\Areas\\Admin\\Views\\MonAn\\Sua.cshtml",
+              "RelativeToolTip": "Areas\\Admin\\Views\\MonAn\\Sua.cshtml",
+              "ViewState": "AgIAAE4AAAAAAAAAAAAAAFoAAAAwAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-06-30T09:11:19.906Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "HomeController.cs",
+              "DocumentMoniker": "D:\\Hoc\\Ky 3 Nam 2\\Back-end\\BaiTapBackEnd\\Areas\\Admin\\Controllers\\HomeController.cs",
+              "RelativeDocumentMoniker": "Areas\\Admin\\Controllers\\HomeController.cs",
+              "ToolTip": "D:\\Hoc\\Ky 3 Nam 2\\Back-end\\BaiTapBackEnd\\Areas\\Admin\\Controllers\\HomeController.cs",
+              "RelativeToolTip": "Areas\\Admin\\Controllers\\HomeController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-30T10:27:47.642Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\Hoc\\Ky 3 Nam 2\\Back-end\\BaiTapBackEnd\\Areas\\Admin\\Views\\Home\\Index.cshtml",
+              "RelativeDocumentMoniker": "Areas\\Admin\\Views\\Home\\Index.cshtml",
+              "ToolTip": "D:\\Hoc\\Ky 3 Nam 2\\Back-end\\BaiTapBackEnd\\Areas\\Admin\\Views\\Home\\Index.cshtml",
+              "RelativeToolTip": "Areas\\Admin\\Views\\Home\\Index.cshtml",
+              "ViewState": "AgIAAH4AAAAAAAAAAAAAAIwAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-06-30T10:15:23.119Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "Them.cshtml",
+              "DocumentMoniker": "D:\\Hoc\\Ky 3 Nam 2\\Back-end\\BaiTapBackEnd\\Areas\\Admin\\Views\\MonAn\\Them.cshtml",
+              "RelativeDocumentMoniker": "Areas\\Admin\\Views\\MonAn\\Them.cshtml",
+              "ToolTip": "D:\\Hoc\\Ky 3 Nam 2\\Back-end\\BaiTapBackEnd\\Areas\\Admin\\Views\\MonAn\\Them.cshtml",
+              "RelativeToolTip": "Areas\\Admin\\Views\\MonAn\\Them.cshtml",
+              "ViewState": "AgIAAEgAAAAAAAAAAAAAAFMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-06-28T14:06:06.708Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "LichSuDonHang.cshtml",
+              "DocumentMoniker": "D:\\Hoc\\Ky 3 Nam 2\\Back-end\\BaiTapBackEnd\\Views\\DonHang\\LichSuDonHang.cshtml",
+              "RelativeDocumentMoniker": "Views\\DonHang\\LichSuDonHang.cshtml",
+              "ToolTip": "D:\\Hoc\\Ky 3 Nam 2\\Back-end\\BaiTapBackEnd\\Views\\DonHang\\LichSuDonHang.cshtml",
+              "RelativeToolTip": "Views\\DonHang\\LichSuDonHang.cshtml",
+              "ViewState": "AgIAADMAAAAAAAAAAAAAADUAAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-06-30T03:57:55.839Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\Hoc\\Ky 3 Nam 2\\Back-end\\BaiTapBackEnd\\Views\\Home\\Index.cshtml",
+              "RelativeDocumentMoniker": "Views\\Home\\Index.cshtml",
+              "ToolTip": "D:\\Hoc\\Ky 3 Nam 2\\Back-end\\BaiTapBackEnd\\Views\\Home\\Index.cshtml",
+              "RelativeToolTip": "Views\\Home\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAABiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-06-30T05:59:55.327Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "ChiTietDonHang.cshtml",
+              "DocumentMoniker": "D:\\Hoc\\Ky 3 Nam 2\\Back-end\\BaiTapBackEnd\\Views\\DonHang\\ChiTietDonHang.cshtml",
+              "RelativeDocumentMoniker": "Views\\DonHang\\ChiTietDonHang.cshtml",
+              "ToolTip": "D:\\Hoc\\Ky 3 Nam 2\\Back-end\\BaiTapBackEnd\\Views\\DonHang\\ChiTietDonHang.cshtml",
+              "RelativeToolTip": "Views\\DonHang\\ChiTietDonHang.cshtml",
+              "ViewState": "AgIAAE8AAAAAAAAAAAAuwEcAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-06-30T07:09:38.619Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "ChiTietDonHang.cs",
+              "DocumentMoniker": "D:\\Hoc\\Ky 3 Nam 2\\Back-end\\BaiTapBackEnd\\Models\\ChiTietDonHang.cs",
+              "RelativeDocumentMoniker": "Models\\ChiTietDonHang.cs",
+              "ToolTip": "D:\\Hoc\\Ky 3 Nam 2\\Back-end\\BaiTapBackEnd\\Models\\ChiTietDonHang.cs",
+              "RelativeToolTip": "Models\\ChiTietDonHang.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAAoAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-28T13:27:18.354Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "DangNhap.cshtml",
+              "DocumentMoniker": "D:\\Hoc\\Ky 3 Nam 2\\Back-end\\BaiTapBackEnd\\Views\\TaiKhoan\\DangNhap.cshtml",
+              "RelativeDocumentMoniker": "Views\\TaiKhoan\\DangNhap.cshtml",
+              "ToolTip": "D:\\Hoc\\Ky 3 Nam 2\\Back-end\\BaiTapBackEnd\\Views\\TaiKhoan\\DangNhap.cshtml",
+              "RelativeToolTip": "Views\\TaiKhoan\\DangNhap.cshtml",
+              "ViewState": "AgIAAC4AAAAAAAAAAAAqwCYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-06-28T13:33:16.987Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "DangKy.cshtml",
+              "DocumentMoniker": "D:\\Hoc\\Ky 3 Nam 2\\Back-end\\BaiTapBackEnd\\Views\\TaiKhoan\\DangKy.cshtml",
+              "RelativeDocumentMoniker": "Views\\TaiKhoan\\DangKy.cshtml",
+              "ToolTip": "D:\\Hoc\\Ky 3 Nam 2\\Back-end\\BaiTapBackEnd\\Views\\TaiKhoan\\DangKy.cshtml",
+              "RelativeToolTip": "Views\\TaiKhoan\\DangKy.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-06-28T13:33:42.339Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\Hoc\\Ky 3 Nam 2\\Back-end\\BaiTapBackEnd\\Views\\MonAn\\Index.cshtml",
+              "RelativeDocumentMoniker": "Views\\MonAn\\Index.cshtml",
+              "ToolTip": "D:\\Hoc\\Ky 3 Nam 2\\Back-end\\BaiTapBackEnd\\Views\\MonAn\\Index.cshtml",
+              "RelativeToolTip": "Views\\MonAn\\Index.cshtml",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-06-30T07:18:55.691Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "_Layout.cshtml",
+              "DocumentMoniker": "D:\\Hoc\\Ky 3 Nam 2\\Back-end\\BaiTapBackEnd\\Areas\\Admin\\Views\\Shared\\_Layout.cshtml",
+              "RelativeDocumentMoniker": "Areas\\Admin\\Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "D:\\Hoc\\Ky 3 Nam 2\\Back-end\\BaiTapBackEnd\\Areas\\Admin\\Views\\Shared\\_Layout.cshtml",
+              "RelativeToolTip": "Areas\\Admin\\Views\\Shared\\_Layout.cshtml",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAACIAAAAZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-06-30T03:54:28.755Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "GanQuyen.cshtml",
+              "DocumentMoniker": "D:\\Hoc\\Ky 3 Nam 2\\Back-end\\BaiTapBackEnd\\Areas\\Admin\\Views\\TaiKhoan\\GanQuyen.cshtml",
+              "RelativeDocumentMoniker": "Areas\\Admin\\Views\\TaiKhoan\\GanQuyen.cshtml",
+              "ToolTip": "D:\\Hoc\\Ky 3 Nam 2\\Back-end\\BaiTapBackEnd\\Areas\\Admin\\Views\\TaiKhoan\\GanQuyen.cshtml",
+              "RelativeToolTip": "Areas\\Admin\\Views\\TaiKhoan\\GanQuyen.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAABIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-06-28T13:56:10.353Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "DanhSach.cshtml",
+              "DocumentMoniker": "D:\\Hoc\\Ky 3 Nam 2\\Back-end\\BaiTapBackEnd\\Areas\\Admin\\Views\\TaiKhoan\\DanhSach.cshtml",
+              "RelativeDocumentMoniker": "Areas\\Admin\\Views\\TaiKhoan\\DanhSach.cshtml",
+              "ToolTip": "D:\\Hoc\\Ky 3 Nam 2\\Back-end\\BaiTapBackEnd\\Areas\\Admin\\Views\\TaiKhoan\\DanhSach.cshtml",
+              "RelativeToolTip": "Areas\\Admin\\Views\\TaiKhoan\\DanhSach.cshtml",
+              "ViewState": "AgIAADsAAAAAAAAAAAAuwE0AAAAlAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-06-28T13:49:17.383Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "TaiKhoan.cs",
+              "DocumentMoniker": "D:\\Hoc\\Ky 3 Nam 2\\Back-end\\BaiTapBackEnd\\Models\\TaiKhoan.cs",
+              "RelativeDocumentMoniker": "Models\\TaiKhoan.cs",
+              "ToolTip": "D:\\Hoc\\Ky 3 Nam 2\\Back-end\\BaiTapBackEnd\\Models\\TaiKhoan.cs",
+              "RelativeToolTip": "Models\\TaiKhoan.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAABCAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-28T13:21:38.968Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "GioHangController.cs",
+              "DocumentMoniker": "D:\\Hoc\\Ky 3 Nam 2\\Back-end\\BaiTapBackEnd\\Controllers\\GioHangController.cs",
+              "RelativeDocumentMoniker": "Controllers\\GioHangController.cs",
+              "ToolTip": "D:\\Hoc\\Ky 3 Nam 2\\Back-end\\BaiTapBackEnd\\Controllers\\GioHangController.cs",
+              "RelativeToolTip": "Controllers\\GioHangController.cs",
+              "ViewState": "AgIAADgBAAAAAAAAAAAgwFEBAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-28T16:48:10.926Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "GioHang.cs",
+              "DocumentMoniker": "D:\\Hoc\\Ky 3 Nam 2\\Back-end\\BaiTapBackEnd\\Models\\GioHang.cs",
+              "RelativeDocumentMoniker": "Models\\GioHang.cs",
+              "ToolTip": "D:\\Hoc\\Ky 3 Nam 2\\Back-end\\BaiTapBackEnd\\Models\\GioHang.cs",
+              "RelativeToolTip": "Models\\GioHang.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAoAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-28T13:27:26.8Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "DonHangController.cs",
+              "DocumentMoniker": "D:\\Hoc\\Ky 3 Nam 2\\Back-end\\BaiTapBackEnd\\Controllers\\DonHangController.cs",
+              "RelativeDocumentMoniker": "Controllers\\DonHangController.cs",
+              "ToolTip": "D:\\Hoc\\Ky 3 Nam 2\\Back-end\\BaiTapBackEnd\\Controllers\\DonHangController.cs",
+              "RelativeToolTip": "Controllers\\DonHangController.cs",
+              "ViewState": "AgIAAFMAAAAAAAAAAAAuwGsAAAAUAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-28T17:05:10.935Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
+              "Title": "DonHang.cs",
+              "DocumentMoniker": "D:\\Hoc\\Ky 3 Nam 2\\Back-end\\BaiTapBackEnd\\Models\\DonHang.cs",
+              "RelativeDocumentMoniker": "Models\\DonHang.cs",
+              "ToolTip": "D:\\Hoc\\Ky 3 Nam 2\\Back-end\\BaiTapBackEnd\\Models\\DonHang.cs",
+              "RelativeToolTip": "Models\\DonHang.cs",
+              "ViewState": "AgIAABQAAAAAAAAAAAAzwCQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-28T13:27:08.61Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 28,
+              "Title": "ShopDoAnNhanhDbcontext.cs",
+              "DocumentMoniker": "D:\\Hoc\\Ky 3 Nam 2\\Back-end\\BaiTapBackEnd\\Models\\ShopDoAnNhanhDbcontext.cs",
+              "RelativeDocumentMoniker": "Models\\ShopDoAnNhanhDbcontext.cs",
+              "ToolTip": "D:\\Hoc\\Ky 3 Nam 2\\Back-end\\BaiTapBackEnd\\Models\\ShopDoAnNhanhDbcontext.cs",
+              "RelativeToolTip": "Models\\ShopDoAnNhanhDbcontext.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-28T13:24:13.284Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 29,
+              "Title": "TaiKhoanController.cs",
+              "DocumentMoniker": "D:\\Hoc\\Ky 3 Nam 2\\Back-end\\BaiTapBackEnd\\Controllers\\TaiKhoanController.cs",
+              "RelativeDocumentMoniker": "Controllers\\TaiKhoanController.cs",
+              "ToolTip": "D:\\Hoc\\Ky 3 Nam 2\\Back-end\\BaiTapBackEnd\\Controllers\\TaiKhoanController.cs",
+              "RelativeToolTip": "Controllers\\TaiKhoanController.cs",
+              "ViewState": "AgIAAEMAAAAAAAAAAAAiwF0AAAAiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-28T13:31:20.657Z"
+            }
+          ]
+        },
+        {
+          "DockedHeight": 226,
+          "SelectedChildIndex": -1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:95:0:{e8034f19-ab72-4f06-83fd-f6832b41aa63}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:1:0:{e8034f19-ab72-4f06-83fd-f6832b41aa63}"
+            }
+          ]
+        },
+        {
+          "DockedHeight": 66,
+          "SelectedChildIndex": -1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{0ad07096-bba9-4900-a651-0598d26f6d24}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+            }
+          ]
+        },
+        {
+          "DockedHeight": 226,
+          "SelectedChildIndex": -1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:99:0:{e8034f19-ab72-4f06-83fd-f6832b41aa63}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:102:0:{e8034f19-ab72-4f06-83fd-f6832b41aa63}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

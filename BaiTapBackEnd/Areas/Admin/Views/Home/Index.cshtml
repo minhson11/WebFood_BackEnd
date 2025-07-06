@@ -1,0 +1,143 @@
+@{
+    ViewData["Title"] = "Trang chủ Admin";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-fluid">
+    <div class="row mb-4">
+        <div class="col-12">
+            <h1 class="h3 mb-0 text-gray-800">
+                <i class="fas fa-tachometer-alt me-2"></i>Bảng điều khiển
+            </h1>
+            <p class="text-muted">Chào mừng bạn đến với hệ thống quản lý</p>
+        </div>
+    </div>
+
+    <!-- Thống kê tổng quan -->
+    <div class="row mb-4">
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card admin-border-left-primary shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="admin-text-xs admin-font-weight-bold text-primary admin-text-uppercase mb-1">
+                                Tổng món ăn
+                            </div>
+                            <div class="h5 mb-0 admin-font-weight-bold admin-text-gray-800">@ViewBag.TongMonAn</div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-utensils fa-2x admin-text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card admin-border-left-success shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="admin-text-xs admin-font-weight-bold text-success admin-text-uppercase mb-1">
+                                Tổng đơn hàng
+                            </div>
+                            <div class="h5 mb-0 admin-font-weight-bold admin-text-gray-800">@ViewBag.TongDonHang</div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-shopping-bag fa-2x admin-text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card admin-border-left-info shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="admin-text-xs admin-font-weight-bold text-info admin-text-uppercase mb-1">
+                                Tổng tài khoản
+                            </div>
+                            <div class="h5 mb-0 admin-font-weight-bold admin-text-gray-800">@ViewBag.TongTaiKhoan</div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-users fa-2x admin-text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card admin-border-left-warning shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="admin-text-xs admin-font-weight-bold text-warning admin-text-uppercase mb-1">
+                                Đơn hàng mới
+                            </div>
+                            <div class="h5 mb-0 admin-font-weight-bold admin-text-gray-800">@ViewBag.DonHangMoi</div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-clock fa-2x admin-text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Liên kết nhanh -->
+    <div class="row">
+        <div class="col-lg-6 mb-4">
+            <div class="card shadow">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">
+                        <i class="fas fa-utensils me-2"></i>Quản lý món ăn
+                    </h6>
+                </div>
+                <div class="card-body">
+                    <p class="text-muted">Thêm, sửa, xóa và quản lý các món ăn trong hệ thống.</p>
+                    <a href="@Url.Action("Index", "MonAn", new { area = "Admin" })" class="btn btn-primary">
+                        <i class="fas fa-arrow-right me-1"></i>Đi đến quản lý món ăn
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-6 mb-4">
+            <div class="card shadow">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-success">
+                        <i class="fas fa-shopping-bag me-2"></i>Quản lý đơn hàng
+                    </h6>
+                </div>
+                <div class="card-body">
+                    <p class="text-muted">Xem và cập nhật trạng thái các đơn hàng của khách hàng.</p>
+                    <a href="@Url.Action("Index", "DonHang", new { area = "Admin" })" class="btn btn-success">
+                        <i class="fas fa-arrow-right me-1"></i>Đi đến quản lý đơn hàng
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-6 mb-4">
+            <div class="card shadow">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-info">
+                        <i class="fas fa-users me-2"></i>Quản lý tài khoản
+                    </h6>
+                </div>
+                <div class="card-body">
+                    <p class="text-muted">Quản lý danh sách tài khoản và phân quyền người dùng.</p>
+                    <a href="@Url.Action("DanhSach", "TaiKhoan", new { area = "Admin" })" class="btn btn-info">
+                        <i class="fas fa-arrow-right me-1"></i>Đi đến quản lý tài khoản
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        
+    </div>
+</div> 

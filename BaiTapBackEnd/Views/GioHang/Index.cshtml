@@ -1,0 +1,232 @@
+@model List<BaiTapBackEnd.Models.GioHang>
+@{
+    ViewData["Title"] = "Giỏ hàng";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <div class="row mb-4">
+        <div class="col-12">
+            <h1 class="text-center mb-3">
+                <i class="fas fa-shopping-cart me-3"></i>Giỏ hàng
+            </h1>
+        </div>
+    </div>
+            
+    @if (!Model.Any())
+            {
+                <div class="text-center py-5">
+                    <div class="card border-0 shadow-sm">
+                        <div class="card-body py-5">
+                    <i class="fas fa-shopping-cart fa-5x text-muted mb-4"></i>
+                    <h3 class="text-muted mb-3">Giỏ hàng trống</h3>
+                    <p class="text-muted mb-4">Bạn chưa có món ăn nào trong giỏ hàng</p>
+                    <a href="@Url.Action("Index", "MonAn")" class="btn btn-primary btn-lg">
+                                <i class="fas fa-utensils me-2"></i>Xem thực đơn
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            }
+            else
+            {
+                <div class="row">
+                    <div class="col-lg-8">
+                <div class="card cart-card">
+                    <div class="card-header bg-white">
+                                <h5 class="mb-0">
+                            <i class="fas fa-list me-2"></i>Danh sách món ăn
+                                </h5>
+                            </div>
+                    <div class="card-body">
+                                @foreach (var item in Model)
+                                {
+                            <div class="row align-items-center mb-3 p-3 border rounded" id="cart-item-@item.Id">
+                                <div class="col-md-2">
+                                                    @if (!string.IsNullOrEmpty(item.MonAn.HinhAnh))
+                                                    {
+                                        <img src="@Url.Content("~/images/" + item.MonAn.HinhAnh)" class="img-fluid rounded cart-item-image" alt="@item.MonAn.Ten">
+                                                    }
+                                                    else
+                                                    {
+                                        <div class="bg-light rounded d-flex align-items-center justify-content-center cart-item-placeholder">
+                                            <i class="fas fa-utensils fa-2x text-muted"></i>
+                                                        </div>
+                                                    }
+                                                </div>
+                                <div class="col-md-4">
+                                                    <h6 class="mb-1">@item.MonAn.Ten</h6>
+                                    <small class="text-muted">@item.MonAn.MoTa</small>
+                                </div>
+                                <div class="col-md-2">
+                                    <span class="text-primary fw-bold">@item.MonAn.Gia.ToString("N0")đ</span>
+                                                </div>
+                                <div class="col-md-2">
+                                    <div class="d-flex align-items-center">
+                                        <form asp-action="CapNhatSoLuong" method="post" style="display:inline;">
+                                            <input type="hidden" name="gioHangId" value="@item.Id" />
+                                            <input type="hidden" name="soLuong" value="@(item.SoLuong - 1)" />
+                                            <button type="submit" class="btn btn-outline-secondary btn-sm" @(item.SoLuong <= 1 ? "disabled" : "")>-</button>
+                                        </form>
+                                        <span class="mx-2">@item.SoLuong</span>
+                                        <form asp-action="CapNhatSoLuong" method="post" style="display:inline;">
+                                            <input type="hidden" name="gioHangId" value="@item.Id" />
+                                            <input type="hidden" name="soLuong" value="@(item.SoLuong + 1)" />
+                                            <button type="submit" class="btn btn-outline-secondary btn-sm" @(item.SoLuong >= 100 ? "disabled" : "")>+</button>
+                                        </form>
+                                    </div>
+                                </div>
+                                <div class="col-md-2 text-end">
+                                    <span class="fw-bold text-success">@((item.MonAn.Gia * item.SoLuong).ToString("N0"))đ</span>
+                                                </div>
+                                <div class="col-12 mt-2">
+                                    <form asp-action="XoaKhoiGioHang" method="post" style="display:inline;">
+                                        <input type="hidden" name="gioHangId" value="@item.Id" />
+                                        <button type="submit" class="btn btn-danger btn-sm cart-btn-danger" onclick="return confirm('Xóa món này khỏi giỏ hàng?')">
+                                            <i class="fas fa-trash me-1"></i>Xóa
+                                        </button>
+                                    </form>
+                                </div>
+                                            </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-4">
+                <div class="card cart-card">
+                    <div class="card-header bg-white">
+                                <h5 class="mb-0">
+                            <i class="fas fa-receipt me-2"></i>Tổng đơn hàng
+                                </h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between mb-2">
+                            <span>Tạm tính:</span>
+                            <span id="subtotal">@Model.Sum(x => x.MonAn.Gia * x.SoLuong).ToString("N0")đ</span>
+                        </div>
+                        <div class="d-flex justify-content-between mb-2">
+                            <span>Phí giao hàng:</span>
+                            <span>15.000đ</span>
+                        </div>
+                        <hr>
+                        <div class="d-flex justify-content-between mb-3">
+                            <strong>Tổng cộng:</strong>
+                            <strong class="text-primary fs-5" id="total">@((Model.Sum(x => x.MonAn.Gia * x.SoLuong) + 15000).ToString("N0"))đ</strong>
+                                </div>
+                                
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <a href="@Url.Action("DatHang", "DonHang")" class="btn btn-primary w-100 mb-2 cart-btn-primary">
+                                <i class="fas fa-shopping-bag me-2"></i>Đặt hàng ngay
+                                    </a>
+                        }
+                        else
+                        {
+                            <a href="@Url.Action("DangNhap", "TaiKhoan")" class="btn btn-primary w-100 mb-2 cart-btn-primary">
+                                <i class="fas fa-sign-in-alt me-2"></i>Đăng nhập để đặt hàng
+                            </a>
+                        }
+                        
+                        <a href="@Url.Action("Index", "MonAn")" class="btn btn-outline-secondary w-100">
+                                        <i class="fas fa-arrow-left me-2"></i>Tiếp tục mua hàng
+                                    </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+</div>
+
+<script>
+    function updateQuantity(cartId, change) {
+        const input = document.querySelector(`#cart-item-${cartId} input[type="number"]`);
+        const newQuantity = parseInt(input.value) + change;
+        if (newQuantity >= 1) {
+            updateQuantityDirect(cartId, newQuantity);
+        }
+    }
+
+    function updateQuantityDirect(cartId, quantity) {
+        fetch('/GioHang/CapNhatSoLuong', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'RequestVerificationToken': document.querySelector('input[name="__RequestVerificationToken"]')?.value
+            },
+            body: JSON.stringify({ cartId: cartId, soLuong: quantity })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                updateCartDisplay(data);
+            } else {
+                showNotification('Có lỗi xảy ra!', 'error');
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            showNotification('Có lỗi xảy ra!', 'error');
+        });
+    }
+    
+    function removeFromCart(cartId) {
+        if (confirm('Bạn có chắc muốn xóa món ăn này khỏi giỏ hàng?')) {
+            fetch('/GioHang/XoaKhoiGioHang', {
+            method: 'POST',
+            headers: {
+                    'Content-Type': 'application/json',
+                    'RequestVerificationToken': document.querySelector('input[name="__RequestVerificationToken"]')?.value
+            },
+                body: JSON.stringify({ cartId: cartId })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                    document.getElementById(`cart-item-${cartId}`).remove();
+                    updateCartDisplay(data);
+                    
+                    if (data.cartCount === 0) {
+                    location.reload();
+                }
+            } else {
+                    showNotification('Có lỗi xảy ra!', 'error');
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+                showNotification('Có lỗi xảy ra!', 'error');
+        });
+        }
+    }
+    
+    function updateCartDisplay(data) {
+        document.getElementById('subtotal').textContent = data.subtotal + 'đ';
+        document.getElementById('total').textContent = data.total + 'đ';
+        updateCartCount(data.cartCount);
+        }
+        
+    function showNotification(message, type) {
+        const notification = document.createElement('div');
+        notification.className = `alert alert-${type === 'success' ? 'success' : 'danger'} position-fixed`;
+        notification.style.cssText = 'top: 20px; right: 20px; z-index: 9999; min-width: 300px;';
+        notification.innerHTML = `
+            <i class="fas fa-${type === 'success' ? 'check-circle' : 'exclamation-circle'} me-2"></i>
+            ${message}
+        `;
+        
+        document.body.appendChild(notification);
+        
+        setTimeout(() => {
+            notification.remove();
+        }, 3000);
+    }
+    
+    function updateCartCount(count) {
+        const cartBadge = document.getElementById('cart-count');
+        if (cartBadge) {
+            cartBadge.textContent = count;
+            cartBadge.style.display = count > 0 ? 'block' : 'none';
+        }
+    }
+</script> 
